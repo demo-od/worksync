@@ -12,7 +12,7 @@ const oauth2Client = new OAuth2(
 );
 
 oauth2Client.setCredentials({
-    refresh_token: process.env.GMAIL_REFRESH_TOKEN
+    refresh_token: process.env.GMAIL_REFRESH_TOKEN || null
 });
 
 export const sendVerificationEmail = async (toEmail: string, token: string): Promise<void> => {
