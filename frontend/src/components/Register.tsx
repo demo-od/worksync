@@ -32,8 +32,7 @@ export const Register = () => {
 
         try {
             await apiClient.post('/auth/signup', { firstName, lastName, email, password });
-            localStorage.setItem('registrationMessage', 'Registration successful! Please check your email to verify your account before logging in.');
-            navigate('/login');
+            navigate('/login', { state: { registrationMessage: 'Registration successful! Please check your email to verify your account before logging in.' } });
         } catch (err: any) {
             setLoading(false);
             const backendData = err.response?.data;
@@ -149,7 +148,7 @@ export const Register = () => {
                             {loading ? (
                                 <>
                                     <Loader />
-                                    <span>Creating your account...</span>
+                                    <span>Creating your account. This usually takes about a minute...</span>
                                 </>
                             ) : (
                                 'Create account'

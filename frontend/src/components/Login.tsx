@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { apiClient } from '../api/client.ts';
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Loader from './Loader';
 
 export const Login = ({ onLoginSuccess }: { onLoginSuccess: () => void }) => {
     const navigate = useNavigate(); // 2. Initialize the navigate function
+    const location = useLocation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState<string[]>([]); // 🎯 Changed from 'error' string to 'errors' array
@@ -24,16 +25,14 @@ export const Login = ({ onLoginSuccess }: { onLoginSuccess: () => void }) => {
     }, [theme]);
 
     useEffect(() => {
-        // Check for registration message from localStorage
-        const registrationMessage = localStorage.getItem('registrationMessage');
+        // Check for registration message from navigate state
+        const registrationMessage = location.state?.registrationMessage;
         if (registrationMessage) {
             setSuccessMessage(registrationMessage);
-            // Clear the message after displaying it
-            localStorage.removeItem('registrationMessage');
             // Auto-hide the success message after 5 seconds
             setTimeout(() => setSuccessMessage(''), 5000);
         }
-    }, []);
+    }, [location.state]);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();

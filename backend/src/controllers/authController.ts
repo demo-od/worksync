@@ -9,6 +9,7 @@ import {sendVerificationEmail} from "../services/emailService.js";
 import {AuthenticatedRequest} from "../middleware/authMiddleware.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || 'some_fallback_strign';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 
 // 1. SIGNUP / REGISTER WITH EMAIL TOKEN
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
@@ -221,7 +222,7 @@ export const verifyEmailToken = async (req: Request, res: Response): Promise<voi
         </div>
         <h1>Error</h1>
         <p>Missing or invalid confirmation token. Please check your email link or try registering again.</p>
-        <a href="http://localhost:5173/register" class="button">Try Again</a>
+        <a href="${FRONTEND_URL}/register" class="button">Try Again</a>
         <div class="footer">
             WorkSync SaaS
         </div>
@@ -332,7 +333,7 @@ export const verifyEmailToken = async (req: Request, res: Response): Promise<voi
         </div>
         <h1>Verification Failed</h1>
         <p>The verification link is invalid or has expired. Please try registering again or contact support if the issue persists.</p>
-        <a href="http://localhost:5173/register" class="button">Try Again</a>
+        <a href="${FRONTEND_URL}/register" class="button">Try Again</a>
         <div class="footer">
             WorkSync SaaS
         </div>
@@ -439,7 +440,7 @@ export const verifyEmailToken = async (req: Request, res: Response): Promise<voi
         </div>
         <h1>Email Verified Successfully!</h1>
         <p>Your WorkSync account is now fully active. You can close this tab and proceed to log into the application.</p>
-        <a href="http://localhost:5173/login" class="button">Go to Login</a>
+        <a href="${FRONTEND_URL}/login" class="button">Go to Login</a>
         <div class="footer">
             WorkSync SaaS
         </div>
@@ -548,7 +549,7 @@ export const verifyEmailToken = async (req: Request, res: Response): Promise<voi
         </div>
         <h1>Internal Server Error</h1>
         <p>An unexpected error occurred during confirmation. Please try again or contact support if the issue persists.</p>
-        <a href="http://localhost:5173/register" class="button">Try Again</a>
+        <a href="${FRONTEND_URL}/register" class="button">Try Again</a>
         <div class="footer">
             WorkSync SaaS
         </div>
