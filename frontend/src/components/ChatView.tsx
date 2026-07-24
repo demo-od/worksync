@@ -81,7 +81,8 @@ export const ChatView = ({
     }, [channelId]);
 
     useEffect(() => {
-        socketRef.current = io('http://localhost:5000');
+        const socketUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+        socketRef.current = io(socketUrl);
         socketRef.current.emit('join_channel', channelId);
 
         socketRef.current.on('message_received', (newMsg: Message) => {

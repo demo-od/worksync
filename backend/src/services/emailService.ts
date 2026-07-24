@@ -23,8 +23,8 @@ export const sendVerificationEmail = async (toEmail: string, token: string): Pro
             throw new Error('Failed to obtain access token');
         }
 
-        const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000';
-        const verificationLink = `${backendUrl}/api/auth/verify?token=${token}`;
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+        const verificationLink = `${frontendUrl}/verify?token=${token}`;
 
         const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
 
