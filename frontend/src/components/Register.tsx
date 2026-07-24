@@ -148,7 +148,7 @@ export const Register = () => {
                             {loading ? (
                                 <>
                                     <Loader />
-                                    <span>Creating your account. This usually takes about a minute...</span>
+                                    <span>Creating your account...</span>
                                 </>
                             ) : (
                                 'Create account'
