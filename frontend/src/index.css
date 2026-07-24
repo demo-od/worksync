@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Custom utility to override native Windows desktop scrollbars */
+@layer utilities {
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #3f3f46; /* zinc-700 */
+        border-radius: 9999px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+        background: #27272a; /* zinc-800 */
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #71717a; /* zinc-500 */
+    }
+}

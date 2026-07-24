@@ -1,0 +1,9 @@
+# WebStorm / JetBrains IDE settings
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Environment variables
+.env
+.env.local
