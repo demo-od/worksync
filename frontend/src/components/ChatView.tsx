@@ -422,27 +422,24 @@ export const ChatView = ({
                     {/* Chat Text Input Area */}
                     <div
                         className="shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 shadow-xs">
-                        <textarea
-                            rows={2}
-                            value={typedText}
-                            onChange={handleTextareaChange}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter' && !e.shiftKey) {
-                                    e.preventDefault();
-                                    handleSendMessage();
-                                }
-                            }}
-                            placeholder={`Message #${channelName}...`}
-                            className="w-full resize-none bg-transparent border-0 focus:outline-none focus:ring-0 text-xs text-zinc-900 dark:text-zinc-50 placeholder:text-zinc-400"
-                        />
-                        <div
-                            className="flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/60 pt-2 mt-1">
-                            <div className="text-[10px] text-zinc-400 font-mono hidden sm:block">Markdown active //
-                            </div>
+                        <div className="flex gap-2">
+                            <textarea
+                                rows={2}
+                                value={typedText}
+                                onChange={handleTextareaChange}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' && !e.shiftKey) {
+                                        e.preventDefault();
+                                        handleSendMessage();
+                                    }
+                                }}
+                                placeholder={`Message #${channelName}...`}
+                                className="flex-1 resize-none bg-transparent border-0 focus:outline-none focus:ring-0 text-xs text-zinc-900 dark:text-zinc-50 placeholder:text-zinc-400"
+                            />
                             <button
                                 onClick={handleSendMessage}
                                 disabled={!typedText.trim()}
-                                className="bg-zinc-900 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-900 text-[11px] font-medium p-2 rounded-md transition-opacity cursor-pointer disabled:opacity-30"
+                                className="bg-zinc-900 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-900 text-[11px] font-medium p-2 rounded-md transition-opacity cursor-pointer disabled:opacity-30 h-fit self-end"
                             >
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                      transform="rotate(90)" className="w-4 h-4">
@@ -456,6 +453,7 @@ export const ChatView = ({
                                 </svg>
                             </button>
                         </div>
+                        <div className="text-[10px] text-zinc-400 font-mono hidden sm:block mt-1">Markdown active //</div>
                     </div>
                 </>
             )}

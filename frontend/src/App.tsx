@@ -4,7 +4,7 @@ import { Landing } from './components/Landing';
 import { Login } from './components/Login';
 import { Register } from './components/Register'; // 🎯 New Import
 import { Dashboard } from './components/Dashboard';
-import { Verify } from './components/Verify';
+import  Verify  from './components/Verify';
 import { HSStaticMethods } from 'preline/non-auto';
 
 function App() {
