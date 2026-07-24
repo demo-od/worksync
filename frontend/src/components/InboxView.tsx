@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { apiClient } from '../api/client.ts';
-import type { Notification, InboxViewProps } from "../types";
+import type { InboxViewProps } from "../types";
 
 export const InboxView = ({ setActiveWorkspaceId, notifications, loading, onMarkAsReadComplete }: InboxViewProps) => {
     // Tracking processing states per notification ID to prevent double-clicking
