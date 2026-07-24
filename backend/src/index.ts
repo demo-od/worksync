@@ -52,6 +52,9 @@ io.on('connection', (socket) => {
     });
 });
 
+app.get('/api/health', (req, res) => {
+    res.status(200).send('OK');
+});
 
 httpServer.listen(PORT, () => {
     console.log(`🚀 Server processing data and sockets on http://localhost:${PORT}`);

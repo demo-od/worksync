@@ -68,11 +68,11 @@ export const Landing = () => {
                 </div>
 
                 {/* Quick Action Link Cluster */}
-                <div className="flex items-center justify-center gap-3 w-full">
-                    <Link to="/register" className="text-sm font-medium bg-zinc-900 text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200 h-10 px-5 rounded-lg flex items-center justify-center transition-all shadow-sm">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-3 w-full">
+                    <Link to="/register" className="text-sm font-medium bg-zinc-900 text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200 h-10 px-5 rounded-lg flex items-center justify-center transition-all shadow-sm w-full md:w-auto">
                         Create Free Account
                     </Link>
-                    <Link to="/login" className="text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 h-10 px-5 rounded-lg flex items-center justify-center transition-all">
+                    <Link to="/login" className="text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 h-10 px-5 rounded-lg flex items-center justify-center transition-all w-full md:w-auto">
                         Access Workspaces
                     </Link>
                 </div>
