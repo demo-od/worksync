@@ -397,7 +397,11 @@ export const ChatView = ({
                             );
                         })}
 
-                        {uniqueTypers.length > 0 && (
+                        <div ref={chatEndRef}/>
+                    </div>
+
+                    {uniqueTypers.length > 0 && (
+                        <div className="shrink-0 mb-2">
                             <div
                                 className="flex items-center gap-2 text-[11px] font-mono text-zinc-400 dark:text-zinc-500 pl-2 py-1 animate-in fade-in duration-150 select-none">
                                 <div className="flex items-center gap-1 shrink-0 px-1">
@@ -414,10 +418,8 @@ export const ChatView = ({
                                         : `${uniqueTypers.length} team members are typing...`}
                                 </p>
                             </div>
-                        )}
-
-                        <div ref={chatEndRef}/>
-                    </div>
+                        </div>
+                    )}
 
                     {/* Chat Text Input Area */}
                     <div
