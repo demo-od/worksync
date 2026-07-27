@@ -28,7 +28,7 @@ function App() {
 
                 {/* Dedicated Forms */}
                 <Route path="/login" element={<Login onLoginSuccess={updateAuth} />} />
-                <Route path="/register" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Register />} />
+                <Route path="/register" element={ <Register />} />
                 <Route path="/verify" element={<Verify />} />
 
                 {/* Secure Workspace */}
