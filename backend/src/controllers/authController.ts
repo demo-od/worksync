@@ -9,7 +9,7 @@ import {sendVerificationEmail} from "../services/emailService.js";
 import {AuthenticatedRequest} from "../middleware/authMiddleware.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || 'some_fallback_strign';
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
 
 // 1. SIGNUP / REGISTER WITH EMAIL TOKEN
 export const registerUser = async (req: Request, res: Response): Promise<void> => {

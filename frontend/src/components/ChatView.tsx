@@ -221,7 +221,7 @@ export const ChatView = ({
 
             {/* Context Heading Control Bar */}
             <div
-                className="shrink-0 flex items-center justify-between pb-3 mb-4 border-b border-zinc-200 dark:border-zinc-800 select-none">
+                className="shrink-0 flex items-center justify-between pb-3 mb-2 border-b border-zinc-200 dark:border-zinc-800 select-none">
                 <div className="flex items-center gap-3">
                     <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">#{channelName}</h3>
                     {isAuthorizedToManage && (
@@ -238,6 +238,27 @@ export const ChatView = ({
                 </div>
                 <span className="text-[10px] font-mono text-zinc-400">Stream Synchronized</span>
             </div>
+
+            {uniqueTypers.length > 0 && (
+                <div className="shrink-0 mb-3">
+                    <div
+                        className="flex items-center gap-2 text-[11px] font-mono text-zinc-400 dark:text-zinc-500 pl-2 py-1 animate-in fade-in duration-150 select-none">
+                        <div className="flex items-center gap-1 shrink-0 px-1">
+                            <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
+                                  style={{animationDelay: '0ms'}}/>
+                            <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
+                                  style={{animationDelay: '150ms'}}/>
+                            <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
+                                  style={{animationDelay: '300ms'}}/>
+                        </div>
+                        <p className="italic">
+                            {uniqueTypers.length === 1
+                                ? `${uniqueTypers[0]} is writing...`
+                                : `${uniqueTypers.length} team members are typing...`}
+                        </p>
+                    </div>
+                </div>
+            )}
 
             {isSettingsOpen ? (
                 /* Inline Channel Settings Form view pane */
@@ -308,7 +329,7 @@ export const ChatView = ({
                                         className={`flex items-end gap-2.5 max-w-[85%] sm:max-w-[70%] ${isSelf ? 'flex-row-reverse' : 'flex-row'}`}>
                                         {!isSelf && (
                                             <div
-                                                className="h-6 w-6 rounded bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center font-mono font-bold text-zinc-600 dark:text-zinc-400 shrink-0 uppercase select-none mb-1">
+                                                className="h-6 w-6 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center font-mono font-bold text-zinc-600 dark:text-zinc-400 shrink-0 uppercase select-none mb-1">
                                                 {msg.sender?.firstName?.charAt(0) || '?'}
                                             </div>
                                         )}
@@ -359,6 +380,11 @@ export const ChatView = ({
                                                                 : 'bg-white text-zinc-900 border border-zinc-200/80 dark:bg-zinc-900 dark:text-zinc-50 dark:border-zinc-800 rounded-bl-xs'
                                                         }`}
                                                     >
+                                                        {!isSelf && (
+                                                            <div className="text-[9px] font-medium text-zinc-500 dark:text-zinc-400 mb-1 select-none">
+                                                                {msg.sender?.firstName} {msg.sender?.lastName}
+                                                            </div>
+                                                        )}
                                                         {msg.content}
                                                     </div>
                                                 )}
@@ -400,27 +426,6 @@ export const ChatView = ({
                         <div ref={chatEndRef}/>
                     </div>
 
-                    {uniqueTypers.length > 0 && (
-                        <div className="shrink-0 mb-2">
-                            <div
-                                className="flex items-center gap-2 text-[11px] font-mono text-zinc-400 dark:text-zinc-500 pl-2 py-1 animate-in fade-in duration-150 select-none">
-                                <div className="flex items-center gap-1 shrink-0 px-1">
-                                    <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
-                                          style={{animationDelay: '0ms'}}/>
-                                    <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
-                                          style={{animationDelay: '150ms'}}/>
-                                    <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
-                                          style={{animationDelay: '300ms'}}/>
-                                </div>
-                                <p className="italic">
-                                    {uniqueTypers.length === 1
-                                        ? `${uniqueTypers[0]} is writing...`
-                                        : `${uniqueTypers.length} team members are typing...`}
-                                </p>
-                            </div>
-                        </div>
-                    )}
-
                     {/* Chat Text Input Area */}
                     <div
                         className="shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 shadow-xs">
@@ -436,7 +441,7 @@ export const ChatView = ({
                                     }
                                 }}
                                 placeholder={`Message #${channelName}...`}
-                                className="flex-1 resize-none bg-transparent border-0 focus:outline-none focus:ring-0 text-xs text-zinc-900 dark:text-zinc-50 placeholder:text-zinc-400"
+                                className="flex-1 resize-none bg-transparent border-0 focus:outline-none focus:ring-0 text-xs text-zinc-900 dark:text-zinc-50 placeholder:text-zinc-400 [font-size:16px] sm:[font-size:12px]"
                             />
                             <button
                                 onClick={handleSendMessage}

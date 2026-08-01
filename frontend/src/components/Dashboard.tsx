@@ -289,7 +289,7 @@ export const Dashboard = () => {
             />
 
             <div className="flex-1 flex flex-col h-full overflow-hidden">
-                <header className="h-14 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shrink-0 select-none flex items-center w-full">
+                <header className="fixed top-0 left-0 right-0 h-14 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shrink-0 select-none flex items-center w-full z-50">
                     <div className="max-w-4xl w-full mx-auto px-4 md:px-8 flex items-center justify-between min-w-0">
                         <div className="flex items-center gap-2 min-w-0">
                             <button
@@ -358,7 +358,7 @@ export const Dashboard = () => {
                     </div>
                 </header>
 
-                <div className="flex-1 flex flex-col min-h-0 bg-zinc-50 dark:bg-zinc-950">
+                <div className="flex-1 flex flex-col min-h-0 bg-zinc-50 dark:bg-zinc-950 pt-14">
                     {isInboxModeActive ? (
                         <InboxView
                             notifications={globalNotifications}
