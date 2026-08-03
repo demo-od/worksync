@@ -217,7 +217,7 @@ export const ChatView = ({
 
     return (
         <div
-            className="flex-1 flex flex-col h-full min-h-0 p-4 md:p-8 max-w-4xl w-full mx-auto justify-between bg-zinc-50 dark:bg-zinc-950">
+            className="flex-1 flex flex-col h-full min-h-0 p-4 md:p-8 max-w-4xl w-full mx-auto justify-between bg-zinc-50 dark:bg-zinc-950 overflow-hidden">
 
             {/* Context Heading Control Bar */}
             <div
