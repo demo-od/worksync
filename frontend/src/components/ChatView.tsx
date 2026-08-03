@@ -217,53 +217,57 @@ export const ChatView = ({
 
     return (
         <div
-            className="flex-1 flex flex-col h-full min-h-0 p-4 md:p-8 max-w-4xl w-full mx-auto justify-between bg-zinc-50 dark:bg-zinc-950 overflow-hidden">
+            className="flex-1 flex flex-col h-full min-h-0 px-4 pb-4 md:px-8 md:pb-8 max-w-4xl w-full mx-auto justify-between bg-zinc-50 dark:bg-zinc-950 overflow-hidden">
 
-            {/* Context Heading Control Bar */}
-            <div
-                className="shrink-0 flex items-center justify-between pb-3 mb-2 border-b border-zinc-200 dark:border-zinc-800 select-none">
-                <div className="flex items-center gap-3">
-                    <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">#{channelName}</h3>
-                    {isAuthorizedToManage && (
-                        <button
-                            onClick={() => {
-                                setEditChannelName(channelName);
-                                setIsSettingsOpen(!isSettingsOpen);
-                            }}
-                            className="text-[10px] font-mono font-medium px-2 py-0.5 rounded border border-zinc-200 dark:border-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 bg-white dark:bg-zinc-900 shadow-2xs transition-colors cursor-pointer"
-                        >
-                            {isSettingsOpen ? 'close //' : 'settings //'}
-                        </button>
-                    )}
-                </div>
-                <span className="text-[10px] font-mono text-zinc-400">Stream Synchronized</span>
-            </div>
-
-            {uniqueTypers.length > 0 && (
-                <div className="shrink-0 mb-3">
-                    <div
-                        className="flex items-center gap-2 text-[11px] font-mono text-zinc-400 dark:text-zinc-500 pl-2 py-1 animate-in fade-in duration-150 select-none">
-                        <div className="flex items-center gap-1 shrink-0 px-1">
-                            <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
-                                  style={{animationDelay: '0ms'}}/>
-                            <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
-                                  style={{animationDelay: '150ms'}}/>
-                            <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
-                                  style={{animationDelay: '300ms'}}/>
-                        </div>
-                        <p className="italic">
-                            {uniqueTypers.length === 1
-                                ? `${uniqueTypers[0]} is writing...`
-                                : `${uniqueTypers.length} team members are typing...`}
-                        </p>
+            {/* Locked Top Header Section with spacing for top Navbar */}
+            <div className="shrink-0 sticky top-0 z-10 pt-4 sm:pt-6 bg-zinc-50 dark:bg-zinc-950">
+                {/* Context Heading Control Bar */}
+                <div
+                    className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800 select-none">
+                    <div className="flex items-center gap-3">
+                        <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">#{channelName}</h3>
+                        {isAuthorizedToManage && (
+                            <button
+                                onClick={() => {
+                                    setEditChannelName(channelName);
+                                    setIsSettingsOpen(!isSettingsOpen);
+                                }}
+                                className="text-[10px] font-mono font-medium px-2 py-0.5 rounded border border-zinc-200 dark:border-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 bg-white dark:bg-zinc-900 shadow-2xs transition-colors cursor-pointer"
+                            >
+                                {isSettingsOpen ? 'close //' : 'settings //'}
+                            </button>
+                        )}
                     </div>
+                    <span className="text-[10px] font-mono text-zinc-400">Stream Synchronized</span>
                 </div>
-            )}
+
+                {/* Active Typing Indicator directly under header */}
+                {uniqueTypers.length > 0 && (
+                    <div className="py-2">
+                        <div
+                            className="flex items-center gap-2 text-[11px] font-mono text-zinc-400 dark:text-zinc-500 pl-2 select-none animate-in fade-in duration-150">
+                            <div className="flex items-center gap-1 shrink-0 px-1">
+                                <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
+                                      style={{animationDelay: '0ms'}}/>
+                                <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
+                                      style={{animationDelay: '150ms'}}/>
+                                <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600 animate-bounce"
+                                      style={{animationDelay: '300ms'}}/>
+                            </div>
+                            <p className="italic">
+                                {uniqueTypers.length === 1
+                                    ? `${uniqueTypers[0]} is writing...`
+                                    : `${uniqueTypers.length} team members are typing...`}
+                            </p>
+                        </div>
+                    </div>
+                )}
+            </div>
 
             {isSettingsOpen ? (
                 /* Inline Channel Settings Form view pane */
                 <div
-                    className="flex-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm max-w-xl w-full mx-auto animate-in fade-in zoom-in-95 duration-150 flex flex-col justify-between mb-4">
+                    className="flex-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm max-w-xl w-full mx-auto animate-in fade-in zoom-in-95 duration-150 flex flex-col justify-between my-4">
                     <form onSubmit={handleUpdateChannelSettings} className="space-y-4">
                         <div>
                             <label
@@ -304,7 +308,7 @@ export const ChatView = ({
             ) : (
                 /* Primary Stream View Logs wrapper */
                 <>
-                    <div className="flex-1 overflow-y-auto min-h-0 mb-4 flex flex-col custom-scrollbar space-y-4 pr-1">
+                    <div className="flex-1 overflow-y-auto min-h-0 my-4 flex flex-col custom-scrollbar space-y-4 pr-1">
                         <div
                             className="text-center py-8 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900/40 p-6 select-none shrink-0">
                             <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider">End of Encrypted
@@ -450,12 +454,12 @@ export const ChatView = ({
                             >
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                      transform="rotate(90)" className="w-4 h-4">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
                                         <path
                                             d="M14.4376 15.3703L12.3042 19.5292C11.9326 20.2537 10.8971 20.254 10.525 19.5297L4.24059 7.2971C3.81571 6.47007 4.65077 5.56156 5.51061 5.91537L18.5216 11.2692C19.2984 11.5889 19.3588 12.6658 18.6227 13.0704L14.4376 15.3703ZM14.4376 15.3703L5.09594 6.90886"
-                                            stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+                                            stroke="#000000" strokeWidth="2" strokeLinecap="round"></path>
                                     </g>
                                 </svg>
                             </button>

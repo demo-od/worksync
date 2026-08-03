@@ -23,7 +23,7 @@ export const Landing = () => {
         <div className="min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 antialiased font-sans flex flex-col justify-between transition-colors duration-200">
 
             {/* 🧭 Minimal Top Header Navbar */}
-            <header className="fixed top-0 left-0 right-0 h-16 px-6 md:px-12 flex items-center justify-between border-b border-zinc-100 dark:border-zinc-900 bg-white dark:bg-zinc-900 z-50">
+            <header className="h-16 px-6 md:px-12 flex items-center justify-between border-b border-zinc-100 dark:border-zinc-900 bg-white dark:bg-zinc-900">
                 <div className="flex items-center gap-3 select-none">
 
                     <button
@@ -57,7 +57,7 @@ export const Landing = () => {
             </header>
 
             {/* 🎯 Centered Hero / Value Section */}
-            <main className="flex-1 flex flex-col items-center justify-center text-center px-6 max-w-2xl mx-auto space-y-6 pt-16">
+            <main className="flex-1 flex flex-col items-center justify-center text-center px-6 max-w-2xl mx-auto space-y-6">
                 <div className="space-y-3">
                     <h1 className="text-4xl md:text-5xl font-semibold tracking-tight leading-none text-zinc-900 dark:text-zinc-50">
                         Enterprise execution meets real-time velocity.
